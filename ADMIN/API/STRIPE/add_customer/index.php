@@ -3,7 +3,8 @@
 //error_reporting(E_ALL);
 //ini_set('display_errors', 1);
     
-include_once($_SERVER['DOCUMENT_ROOT'] . '/PHP/MYF1.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/PHP/MYF1.php'); // It's good practice to include your main functions file first
+include_once($_SERVER['DOCUMENT_ROOT'] . '/PHP/keys.php'); // Include the new keys file
 
 
 //setlocale(LC_ALL, 'en_US.UTF-8');
@@ -23,7 +24,7 @@ $DATA_STR = json_encode($DATA , true);
 
 function FUNCION($email, $name, $description = null) {
     // Set your Stripe secret key
-    \Stripe\Stripe::setApiKey('sk_test_ZrX77nHXoVge9uHFlssXjQZ8');
+    \Stripe\Stripe::setApiKey(STRIPE_SECRET_KEY);
 
     try {
         // Check if a customer with the given email already exists
@@ -67,4 +68,3 @@ function FUNCION($email, $name, $description = null) {
  
     
 ?>
-

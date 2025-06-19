@@ -4,7 +4,8 @@
 //ini_set('display_errors', 1);
     
 //echo $_SERVER['DOCUMENT_ROOT'] . '/ADMIN/PHP/MYF1.php';
-include_once($_SERVER['DOCUMENT_ROOT'] . '/PHP/MYF1.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/PHP/MYF1.php'); // It's good practice to include your main functions file first
+include_once($_SERVER['DOCUMENT_ROOT'] . '/PHP/keys.php'); // Include the new keys file
 
 //include_once($_SERVER['DOCUMENT_ROOT'] . '/ADMIN/PHP/MYF1.php');
 
@@ -25,8 +26,8 @@ $DATA = $BODY_OB;
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function cancelSubscription($subscriptionId, $atPeriodEnd = false) {
-    \Stripe\Stripe::setApiKey('sk_test_ZrX77nHXoVge9uHFlssXjQZ8');
-    $stripe = new \Stripe\StripeClient('sk_test_ZrX77nHXoVge9uHFlssXjQZ8');
+    \Stripe\Stripe::setApiKey(STRIPE_SECRET_KEY);
+    $stripe = new \Stripe\StripeClient(STRIPE_SECRET_KEY);
 
     try {
 	
@@ -65,4 +66,3 @@ function cancelSubscription($subscriptionId, $atPeriodEnd = false) {
 
     
 ?>
-
